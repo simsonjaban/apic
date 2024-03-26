@@ -1,0 +1,13 @@
+###delete a user###
+#Login
+apic login --server mgmt_endpoint_url --realm provider/ldap-uat --username apiadmin
+
+#First, find the name of the user registry:
+apic user-registries:list --server mgmt_endpoint_url --org org-name-sdn-bhd --format json
+
+#Next, list all the users in the user registry:
+apic users:list --server mgmt_endpoint_url --org org-name-sdn-bhd --user-registry ldap-uat --format json
+
+#Finally, delete the user:
+apic users:delete user_name --server mgmt_endpoint_url --org org-name-sdn-bhd --user-registry ldap-uat
+
